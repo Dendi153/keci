@@ -6,7 +6,7 @@
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Кеці — грузинська кухня</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Rubik:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Rubik:wght@400;500;700&family=Noto+Serif+Georgian:wght@500;700&display=swap">
 <style>
 /* Layout: dark, photo-led. Three-panel photo hero, then alternating dark bands: menu, dishes gallery, about, reviews, contacts */
 :root {
@@ -186,6 +186,11 @@ h2, h3, .panel .cap h2, .logo { font-weight: 400; text-transform: none; letter-s
 .gallery figcaption { font-family: var(--head); text-transform: none; letter-spacing: 0; font-size: 19px; }
 .score b, .big-phone { font-family: var(--body); font-weight: 700; }
 .dish .n, .review .who { font-weight: 500; }
+/* Georgian lettering (mkhedruli) as the signature detail */
+.ka { display: block; font-family: var(--geo); font-weight: 700; color: var(--accent-2); line-height: 1.2; letter-spacing: .01em; }
+.panel .cap .ka { font-size: clamp(18px, 1.8vw, 24px); margin-bottom: 4px; }
+.sec-title .ka { font-size: 20px; margin-bottom: 6px; }
+.logo .ka-logo { font-family: var(--geo); font-weight: 700; font-size: 16px; color: var(--accent-2); margin-left: 8px; }
 
 footer.bottom { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 12px; }
 footer.bottom .wrap { display: grid; gap: 8px; }
@@ -197,7 +202,7 @@ footer.bottom ul { margin: 8px 0 0; padding-left: 18px; }
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#top">Кеці</a>
+    <a class="logo" href="#top">Кеці<b class="ka-logo" lang="ka">ქეცი</b></a>
     <nav>
       <a href="#menu">Меню</a>
       <a href="#dishes">Страви</a>
@@ -213,15 +218,15 @@ footer.bottom ul { margin: 8px 0 0; padding-left: 18px; }
   <section class="hero" aria-label="Головне">
     <div class="panel">
       <img src="khachapuri.jpg" alt="Хачапурі по-аджарськи з яйцем і маслом">
-      <div class="cap"><h2>Хачапурі</h2><div class="bar"></div><p>Аджарулі, імерулі, мегрулі, пеновані</p></div>
+      <div class="cap"><span class="ka" lang="ka">ხაჭაპური</span><h2>Хачапурі</h2><div class="bar"></div><p>Аджарулі, імерулі, мегрулі, пеновані</p></div>
     </div>
     <div class="panel">
       <img src="khinkali.jpg" alt="Хінкалі на тарілці">
-      <div class="cap"><h2>Хінкалі</h2><div class="bar"></div><p>З яловичиною, бараниною, грибами</p></div>
+      <div class="cap"><span class="ka" lang="ka">ხინკალი</span><h2>Хінкалі</h2><div class="bar"></div><p>З яловичиною, бараниною, грибами</p></div>
     </div>
     <div class="panel">
       <img src="shashlik.jpg" alt="Мцваді на шампурі над вугіллям">
-      <div class="cap"><h2>Мангал</h2><div class="bar"></div><p>Мцваді, люля, курча тапака</p></div>
+      <div class="cap"><span class="ka" lang="ka">მწვადი</span><h2>Мангал</h2><div class="bar"></div><p>Мцваді, люля, курча тапака</p></div>
     </div>
     <div class="hero-foot">
       <div class="wrap">
@@ -237,7 +242,7 @@ footer.bottom ul { margin: 8px 0 0; padding-left: 18px; }
   <section class="s" id="menu">
     <div class="wrap">
       <div class="s-head">
-        <h2>Меню</h2>
+        <div class="sec-title"><span class="ka" lang="ka">მენიუ</span><h2>Меню</h2></div>
       </div>
       <div class="tabs" role="tablist" id="tabs"></div>
       <div class="menu" id="menuList"></div>
@@ -248,7 +253,7 @@ footer.bottom ul { margin: 8px 0 0; padding-left: 18px; }
   <section class="s alt" id="dishes">
     <div class="wrap">
       <div class="s-head">
-        <h2>Страви</h2>
+        <div class="sec-title"><span class="ka" lang="ka">კერძები</span><h2>Страви</h2></div>
       </div>
       <div class="gallery">
         <figure class="big"><img src="pkhali.jpg" alt="Пхалі та баклажани з горіхами" loading="lazy"><figcaption>Пхалі асорті<small>шпинат, буряк, волоський горіх</small></figcaption></figure>
@@ -266,7 +271,7 @@ footer.bottom ul { margin: 8px 0 0; padding-left: 18px; }
   <section class="s" id="about">
     <div class="wrap">
       <div class="about">
-        <h2>Про ресторан</h2>
+        <div class="sec-title"><span class="ka" lang="ka">ჩვენ შესახებ</span><h2>Про ресторан</h2></div>
         <div class="about-text">
           <p>Кеці відкрився у 2019 році. Назва від глиняної сковороди, на якій у Грузії запікають гриби з сулугуні. На кухні працюють кухарі з Тбілісі та Кутаїсі.</p>
           <p>Хачапурі печемо в печі після замовлення, тому чекати доведеться хвилин 15. Хінкалі ліпимо щодня зранку. Вино привозимо з Кахетії та Імереті.</p>
@@ -279,7 +284,7 @@ footer.bottom ul { margin: 8px 0 0; padding-left: 18px; }
   <section class="s alt" id="reviews">
     <div class="wrap">
       <div class="s-head">
-        <h2>Відгуки</h2>
+        <div class="sec-title"><span class="ka" lang="ka">შეფასებები</span><h2>Відгуки</h2></div>
         <div class="score"><b id="avg">4.8</b><div><div class="stars" id="avgStars">★★★★★</div><span id="count">6 відгуків</span></div></div>
       </div>
       <div class="rv-grid">
@@ -307,7 +312,7 @@ footer.bottom ul { margin: 8px 0 0; padding-left: 18px; }
 
   <section class="s" id="contacts">
     <div class="wrap">
-      <h2>Контакти</h2>
+      <div class="sec-title"><span class="ka" lang="ka">კონტაქტები</span><h2>Контакти</h2></div>
       <div class="big-phone">+380 (44) 000-00-00</div>
       <p class="lead" style="margin:0 0 40px">Столи бронюємо по телефону.</p>
       <div class="contacts">
