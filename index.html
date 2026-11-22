@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Кеці — грузинська кухня</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Manrope:wght@400;600;800&family=Noto+Serif+Georgian:wght@600&display=swap">
+<style>
+/* Layout: dark, photo-led. Three-panel photo hero, then alternating dark bands: menu, dishes gallery, about, reviews, contacts */
+:root {
+  --bg: #0d0b0b;
+  --band: #161212;
+  --card: #1d1818;
+  --line: #2c2525;
+  --fg: #f3eeea;
+  --muted: #a89f99;
+  --accent: #d4283f;       /* гранат */
+  --accent-2: #f0b54a;     /* жовток / зірки */
+  --head: "Oswald", "Arial Narrow", sans-serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --geo: "Noto Serif Georgian", "Sylfaen", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
+.wrap {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+h2 { font-family: var(--head); font-weight: 700; text-transform: uppercase; font-size: clamp(34px, 5vw, 52px); line-height: 1.05; margin: 0; letter-spacing: .01em; text-wrap: balance; }
+h3 { font-family: var(--head); font-weight: 700; text-transform: uppercase; font-size: 22px; line-height: 1.15; margin: 0; letter-spacing: .02em; }
+.eyebrow { font-family: var(--head); text-transform: uppercase; letter-spacing: .18em; font-size: 13px; color: var(--accent); margin-bottom: 10px; display: block; }
+.lead { color: var(--muted); max-width: 60ch; margin: 14px 0 0; }
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+  font-family: var(--head); text-transform: uppercase; letter-spacing: .06em; font-size: 15px; font-weight: 500;
+  padding: 12px 22px; border-radius: 4px; border: 1px solid transparent;
+  background: var(--accent); color: #fff; transition: filter .15s, background .15s;
+}
+.btn:hover { filter: brightness(1.12); }
+.btn.ghost { background: rgba(0,0,0,.35); border-color: rgba(255,255,255,.4); }
+.btn.ghost:hover { background: rgba(255,255,255,.1); }
+
+/* header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: rgba(13,11,11,.92); }
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: rgba(13,11,11,.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 64px; }
+.logo { display: flex; align-items: baseline; gap: 10px; text-decoration: none; font-family: var(--head); font-weight: 700; font-size: 24px; letter-spacing: .06em; }
+.logo i { font-style: normal; display: inline-flex; gap: 3px; align-self: center; }
+.logo i b { width: 4px; height: 18px; background: var(--accent); transform: skewX(-18deg); display: block; }
+.logo i b:nth-child(2) { background: var(--accent-2); }
+.logo span { font-family: var(--geo); font-size: 14px; color: var(--muted); font-weight: 600; letter-spacing: 0; }
+nav { display: flex; gap: 26px; font-size: 14px; font-weight: 600; }
+nav a { text-decoration: none; color: #d8d0ca; }
+nav a:hover { color: #fff; }
+.phone { font-size: 14px; padding: 9px 16px; }
+@media (max-width: 900px) { nav { display: none; } }
+@media (max-width: 460px) { .phone .num { display: none; } }
+
+/* hero */
+.hero { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); height: min(86vh, 760px); min-height: 520px; margin-top: -64px; }
+.panel { position: relative; overflow: hidden; display: flex; align-items: flex-end; border-right: 1px solid rgba(255,255,255,.08); }
+.panel:last-child { border-right: 0; }
+.panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; }
+.panel:hover img { transform: scale(1.05); }
+.panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.15) 30%, rgba(0,0,0,.9)); }
+.panel .cap { position: relative; z-index: 1; padding: 0 28px 150px; max-width: 360px; }
+.panel .cap h2 { font-size: clamp(38px, 4.6vw, 64px); }
+.panel .cap .bar { width: 48px; height: 3px; background: var(--accent); margin: 12px 0 14px; }
+.panel:nth-child(2) .bar { background: var(--accent-2); }
+.panel .cap p { margin: 0; color: #ddd5cf; font-size: 14px; line-height: 1.5; }
+.hero-foot { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding-block: 28px; }
+.hero-foot .wrap { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+.hero-foot h1 { font-size: clamp(17px, 1.8vw, 21px); font-weight: 600; margin: 0; max-width: 46ch; line-height: 1.45; }
+.hero-foot h1 b { font-weight: 800; }
+.hero-foot .cta { display: flex; gap: 10px; flex-wrap: wrap; }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; height: auto; min-height: 0; }
+  .panel { height: 300px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .panel .cap { padding: 0 20px 22px; }
+  .hero-foot { position: static; background: var(--band); }
+}
+
+/* sections */
+section.s { padding-block: 96px; }
+section.alt { background: var(--band); }
+.s-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+
+/* menu */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.tabs button {
+  font-family: var(--head); text-transform: uppercase; letter-spacing: .06em; font-size: 14px; cursor: pointer;
+  background: transparent; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 8px 16px;
+}
+.tabs button:hover { color: var(--fg); border-color: #4a3f3f; }
+.tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 18px; }
+.mcat { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 26px 28px; min-width: 0; }
+.mcat h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.mcat h3::before { content: ""; width: 14px; height: 3px; background: var(--accent); }
+.dish { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.dish:last-child { border-bottom: 0; padding-bottom: 0; }
+.dish .n { font-weight: 800; font-size: 16px; }
+.dish .tag { font-family: var(--head); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--accent); border-radius: 3px; padding: 1px 6px; margin-left: 8px; vertical-align: 2px; font-weight: 500; }
+.dish .p { font-family: var(--head); font-size: 20px; font-weight: 500; white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
+.dish .d { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+.dish .w { color: var(--muted); font-size: 13px; text-align: right; white-space: nowrap; }
+.note { color: var(--muted); font-size: 13px; margin-top: 22px; }
+
+/* gallery */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 230px; gap: 12px; }
+.gallery figure { position: relative; margin: 0; overflow: hidden; border-radius: 6px; background: var(--card); }
+.gallery figure.big { grid-column: span 2; grid-row: span 2; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+.gallery figure:hover img { transform: scale(1.05); }
+.gallery figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 14px;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.85));
+  font-family: var(--head); text-transform: uppercase; letter-spacing: .05em; font-size: 17px;
+}
+.gallery figcaption small { display: block; font-family: var(--body); text-transform: none; letter-spacing: 0; font-size: 12px; color: #cfc6c0; }
+@media (max-width: 900px) { .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; } }
+@media (max-width: 480px) { .gallery { grid-template-columns: 1fr; } .gallery figure.big { grid-column: auto; grid-row: span 1; } }
+
+/* about */
+.feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+.feat { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 26px; }
+.feat .k { font-family: var(--head); font-size: 40px; color: var(--accent); line-height: 1; margin-bottom: 14px; font-weight: 700; }
+.feat p { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
+
+/* reviews */
+.score { display: flex; align-items: center; gap: 14px; }
+.score b { font-family: var(--head); font-size: 56px; line-height: 1; font-weight: 700; }
+.score span { color: var(--muted); font-size: 13px; display: block; }
+.stars { color: var(--accent-2); letter-spacing: 2px; }
+.rv-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 900px) { .rv-grid { grid-template-columns: 1fr; } }
+.reviews { display: grid; gap: 14px; }
+.review { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; min-width: 0; }
+.review .rh { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.review .who { font-weight: 800; }
+.review .who small { color: var(--muted); font-weight: 400; margin-left: 8px; font-size: 12px; }
+.review p { margin: 8px 0 6px; font-size: 15px; overflow-wrap: anywhere; }
+.review time { color: var(--muted); font-size: 12px; }
+form.add { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 26px; display: grid; gap: 12px; position: sticky; top: 84px; }
+form.add label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; display: grid; gap: 6px; }
+form.add input, form.add textarea, form.add select {
+  font: inherit; font-size: 15px; color: var(--fg); background: var(--bg); text-transform: none; letter-spacing: 0;
+  border: 1px solid var(--line); border-radius: 4px; padding: 11px 12px; width: 100%; min-width: 0;
+}
+form.add textarea { min-height: 110px; resize: vertical; }
+form.add .btn { justify-content: center; border: 0; }
+.msg { color: var(--accent-2); font-size: 13px; min-height: 1.2em; margin: 0; }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 40px; }
+.about-text p { margin: 0 0 14px; color: #d8d0ca; font-size: 17px; max-width: 60ch; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 20px; } }
+
+/* contacts */
+.contacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.contacts .c { border-left: 3px solid var(--accent); padding: 4px 0 4px 18px; }
+.contacts .c small { display: block; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; margin-bottom: 4px; }
+.contacts .c div { font-size: 18px; font-weight: 600; }
+.big-phone { font-family: var(--head); font-size: clamp(30px, 5vw, 48px); font-weight: 700; margin: 26px 0 10px; letter-spacing: .02em; user-select: all; }
+
+footer.bottom { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 12px; }
+footer.bottom .wrap { display: grid; gap: 8px; }
+footer.bottom details summary { cursor: pointer; }
+footer.bottom ul { margin: 8px 0 0; padding-left: 18px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">КЕЦІ</a>
+    <nav>
+      <a href="#menu">Меню</a>
+      <a href="#dishes">Страви</a>
+      <a href="#about">Про ресторан</a>
+      <a href="#reviews">Відгуки</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+    <a class="btn phone" href="tel:+380440000000">☎ <span class="num">+380 (44) 000-00-00</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Головне">
+    <div class="panel">
+      <img src="khachapuri.jpg" alt="Хачапурі по-аджарськи з яйцем і маслом">
+      <div class="cap"><h2>Хачапурі</h2><div class="bar"></div><p>Аджарулі, імерулі, мегрулі, пеновані</p></div>
+    </div>
+    <div class="panel">
+      <img src="khinkali.jpg" alt="Хінкалі на тарілці">
+      <div class="cap"><h2>Хінкалі</h2><div class="bar"></div><p>З яловичиною, бараниною, грибами</p></div>
+    </div>
+    <div class="panel">
+      <img src="shashlik.jpg" alt="Мцваді на шампурі над вугіллям">
+      <div class="cap"><h2>Мангал</h2><div class="bar"></div><p>Мцваді, люля, курча тапака</p></div>
+    </div>
+    <div class="hero-foot">
+      <div class="wrap">
+        <h1><b>Кеці</b>, ресторан грузинської кухні на Саксаганського, 14. Працюємо щодня з 12:00.</h1>
+        <div class="cta">
+          <a class="btn" href="#contacts">Забронювати стіл</a>
+          <a class="btn ghost" href="#menu">Меню</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="menu">
+    <div class="wrap">
+      <div class="s-head">
+        <h2>Меню</h2>
+      </div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="menu" id="menuList"></div>
+      <p class="note">Обслуговування не входить у вартість. Про алергії скажіть офіціанту.</p>
+    </div>
+  </section>
+
+  <section class="s alt" id="dishes">
+    <div class="wrap">
+      <div class="s-head">
+        <h2>Страви</h2>
+      </div>
+      <div class="gallery">
+        <figure class="big"><img src="pkhali.jpg" alt="Пхалі та баклажани з горіхами" loading="lazy"><figcaption>Пхалі асорті<small>шпинат, буряк, волоський горіх</small></figcaption></figure>
+        <figure><img src="chakhokhbili.jpg" alt="Чахохбілі" loading="lazy"><figcaption>Чахохбілі<small>курка в томатах</small></figcaption></figure>
+        <figure><img src="badrijani.jpg" alt="Баклажани з горіхами" loading="lazy"><figcaption>Баклажани з горіхами<small>з гранатом</small></figcaption></figure>
+        <figure><img src="lobio.jpg" alt="Лобіо" loading="lazy"><figcaption>Лобіо<small>у глиняному горщику</small></figcaption></figure>
+        <figure><img src="ojakhuri.jpg" alt="Оджахурі" loading="lazy"><figcaption>Оджахурі<small>свинина з картоплею</small></figcaption></figure>
+        <figure><img src="mtsvadi.jpg" alt="Мцваді з овочами" loading="lazy"><figcaption>Мцваді<small>з томатами та цибулею</small></figcaption></figure>
+        <figure><img src="churchkhela.jpg" alt="Чурчхела сушиться на сонці" loading="lazy"><figcaption>Чурчхела</figcaption></figure>
+        <figure class="big"><img src="kvevri.jpg" alt="Глиняний квеврі для вина" loading="lazy"><figcaption>Грузинське вино</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="about">
+    <div class="wrap">
+      <div class="about">
+        <h2>Про ресторан</h2>
+        <div class="about-text">
+          <p>Кеці відкрився у 2019 році. Назва від глиняної сковороди, на якій у Грузії запікають гриби з сулугуні. На кухні працюють кухарі з Тбілісі та Кутаїсі.</p>
+          <p>Хачапурі печемо в печі після замовлення, тому чекати доведеться хвилин 15. Хінкалі ліпимо щодня зранку. Вино привозимо з Кахетії та Імереті.</p>
+          <p>У залі 60 місць, є окрема кімната на 20 людей для свят.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s alt" id="reviews">
+    <div class="wrap">
+      <div class="s-head">
+        <h2>Відгуки</h2>
+        <div class="score"><b id="avg">4.8</b><div><div class="stars" id="avgStars">★★★★★</div><span id="count">6 відгуків</span></div></div>
+      </div>
+      <div class="rv-grid">
+        <div class="reviews" id="reviewList"></div>
+        <form class="add" id="reviewForm">
+          <h3>Залишити відгук</h3>
+          <label>Ім'я<input id="rName" name="name" required maxlength="40"></label>
+          <label>Що замовляли<input id="rDish" name="dish" maxlength="60" placeholder="Наприклад, аджарулі"></label>
+          <label>Оцінка
+            <select id="rRate" name="rate">
+              <option value="5">★★★★★ відмінно</option>
+              <option value="4">★★★★ добре</option>
+              <option value="3">★★★ нормально</option>
+              <option value="2">★★ погано</option>
+              <option value="1">★ жахливо</option>
+            </select>
+          </label>
+          <label>Відгук<textarea id="rText" name="text" required maxlength="600"></textarea></label>
+          <button class="btn" type="submit">Опублікувати</button>
+          <p class="msg" id="msg" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="contacts">
+    <div class="wrap">
+      <h2>Контакти</h2>
+      <div class="big-phone">+380 (44) 000-00-00</div>
+      <p class="lead" style="margin:0 0 40px">Столи бронюємо по телефону.</p>
+      <div class="contacts">
+        <div class="c"><small>Адреса</small><div>вул. Саксаганського, 14, Київ</div></div>
+        <div class="c"><small>Години роботи</small><div>Щодня 12:00 – 23:00<br>Пт–Сб до 01:00</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bottom">
+  <div class="wrap">
+    <div>© 2026 Кеці. Грузинська кухня.</div>
+    <details>
+      <summary>Фото: Wikimedia Commons</summary>
+      <ul>
+        <li>Хачапурі — Eugene Krasnaok, CC BY 4.0</li>
+        <li>Хінкалі — Sandra C from Canada, CC BY-SA 2.0</li>
+        <li>Мангал — Alandislands, CC BY-SA 4.0</li>
+        <li>Мцваді — Vladimer Shioshvili, CC BY-SA 2.0</li>
+        <li>Пхалі — salvagekat, CC BY-SA 2.0</li>
+        <li>Чахохбілі, лобіо — Georgian Recipes at Georgia About, CC BY 3.0</li>
+        <li>Баклажани — Sdkb, CC BY-SA 4.0</li>
+        <li>Оджахурі — Hippietrail, CC BY-SA 3.0</li>
+        <li>Чурчхела — Jon Gudorf Photography, CC BY-SA 2.0</li>
+        <li>Квеврі — khalampre, CC BY-SA 2.0</li>
+      </ul>
+    </details>
+  </div>
+</footer>
+
+<script>
+const MENU = [
+  { cat: "Хачапурі", items: [
+    { n: "Аджарулі", d: "Дріжджове тісто, сулугуні, імеретинський сир, яйце, вершкове масло", w: 380, p: 280, tag: "хіт" },
+    { n: "Імерулі", d: "Дріжджове тісто, імеретинський сир, вершкове масло", w: 450, p: 250 },
+    { n: "Мегрулі", d: "Дріжджове тісто, імеретинський сир, сулугуні, яйце", w: 500, p: 290 },
+    { n: "Пеновані", d: "Листкове тісто, сулугуні, імеретинський сир, яйце", w: 300, p: 220 },
+  ]},
+  { cat: "Хінкалі", items: [
+    { n: "З яловичиною і свининою", d: "Тісто, яловичина, свинина, цибуля, кінза, чорний перець", w: "1 шт", p: 42 },
+    { n: "З бараниною", d: "Тісто, баранина, цибуля, кмин, червоний перець", w: "1 шт", p: 48 },
+    { n: "З грибами", d: "Тісто, печериці, цибуля, вершкове масло, зелень", w: "1 шт", p: 38 },
+    { n: "Смажені хінкалі", d: "5 хінкалі на вибір, вершкове масло, чорний перець", w: 350, p: 220 },
+  ]},
+  { cat: "З кеці", items: [
+    { n: "Гриби з сулугуні", d: "Печериці, сулугуні, вершкове масло, естрагон", w: 250, p: 230, tag: "фірмове" },
+    { n: "Сулугуні в кеці", d: "Сулугуні, вершкове масло, м'ята, часник", w: 220, p: 250 },
+    { n: "Чашушулі", d: "Яловичина, томати, болгарський перець, цибуля, гострий перець, кінза", w: 320, p: 320 },
+    { n: "Чкмерулі", d: "Курча, вершки, часник, вершкове масло, кінза", w: 450, p: 390 },
+  ]},
+  { cat: "Закуски та салати", items: [
+    { n: "Пхалі асорті", d: "Шпинат, буряк, квасоля, волоський горіх, часник, гранат", w: 270, p: 220 },
+    { n: "Баклажани з горіхами", d: "Баклажан, волоський горіх, часник, кінза, гранат", w: 200, p: 200 },
+    { n: "Салат по-грузинськи", d: "Томати, огірки, червона цибуля, волоський горіх, кахетинська олія", w: 250, p: 180 },
+    { n: "Лобіо в горщику", d: "Червона квасоля, цибуля, часник, кінза, хмелі-сунелі, мчаді", w: 300, p: 170 },
+  ]},
+  { cat: "М'ясо та мангал", items: [
+    { n: "Мцваді зі свинини", d: "Свиняча шия, цибуля, гранат, соус ткемалі", w: 250, p: 360 },
+    { n: "Люля з баранини", d: "Баранина, курдючний жир, цибуля, сумах, лаваш", w: 220, p: 340 },
+    { n: "Чахохбілі", d: "Курка, томати, цибуля, часник, кінза, базилік", w: 350, p: 290 },
+    { n: "Оджахурі", d: "Свинина, картопля, цибуля, болгарський перець, зелень", w: 380, p: 340 },
+  ]},
+  { cat: "Десерти та напої", items: [
+    { n: "Пеламуші", d: "Виноградний сік, кукурудзяне борошно, волоський горіх", w: 150, p: 150 },
+    { n: "Чурчхела", d: "Волоський горіх, виноградний сік, борошно", w: 100, p: 120 },
+    { n: "Лимонад Лагідзе", d: "Естрагон, груша або вершковий", w: "500 мл", p: 120 },
+    { n: "Сапераві з квеврі", d: "Червоне сухе, Кахетія", w: "150 мл", p: 210 },
+  ]},
+];
+
+const SAMPLE_REVIEWS = [
+  { name: "Анна", dish: "Аджарулі", rate: 5, text: "Брали аджарулі і хінкалі, все дуже смачно. Прийдемо ще", date: "12 листопада 2026" },
+  { name: "Георгій", dish: "Гриби в кеці", rate: 5, text: "Гриби в кеці топ. Хачапурі чекали довго, але воно того варте", date: "8 листопада 2026" },
+  { name: "Марина", dish: "Хінкалі", rate: 4, text: "Смачно, але в пʼятницю ввечері довелось чекати стіл хвилин 20. Бронюйте заздалегідь", date: "2 листопада 2026" },
+  { name: "Ілля", dish: "Чкмерулі", rate: 5, text: "Чкмерулі просто бомба. Офіціант порадив вино, теж сподобалось", date: "29 жовтня 2026" },
+  { name: "Софія", dish: "Пхалі", rate: 5, text: "Затишно, швидко принесли. Лимонад тархун дуже смачний", date: "21 жовтня 2026" },
+  { name: "Дмитро", dish: "Мцваді", rate: 4, text: "Мʼясо нормальне, порції великі. Трохи гучно було в залі", date: "15 жовтня 2026" },
+];
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+const tabs = document.getElementById("tabs");
+const list = document.getElementById("menuList");
+let active = "Усе меню";
+function renderTabs() {
+  tabs.innerHTML = ["Усе меню", ...MENU.map(c => c.cat)].map(c =>
+    `<button role="tab" aria-selected="${c === active}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+}
+function renderMenu() {
+  const cats = active === "Усе меню" ? MENU : MENU.filter(c => c.cat === active);
+  list.innerHTML = cats.map(c => `
+    <div class="mcat"><h3>${esc(c.cat)}</h3>
+      ${c.items.map(i => `
+        <div class="dish">
+          <div class="n">${esc(i.n)}${i.tag ? `<span class="tag">${esc(i.tag)}</span>` : ""}</div>
+          <div class="p">${i.p} ₴</div>
+          <div class="d">${esc(i.d)}</div>
+          <div class="w">${typeof i.w === "number" ? i.w + " г" : esc(i.w)}</div>
+        </div>`).join("")}
+    </div>`).join("");
+}
+tabs.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  active = b.dataset.c; renderTabs(); renderMenu();
+});
+renderTabs(); renderMenu();
+
+const KEY = "keci-reviews-v2";
+let mine = [];
+try { mine = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { mine = []; }
+const stars = r => "★".repeat(r) + "☆".repeat(5 - r);
+function plural(n) {
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return "відгук";
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return "відгуки";
+  return "відгуків";
+}
+function renderReviews() {
+  const all = [...mine, ...SAMPLE_REVIEWS];
+  document.getElementById("reviewList").innerHTML = all.map(r => `
+    <article class="review">
+      <div class="rh"><span class="who">${esc(r.name)}${r.dish ? `<small>${esc(r.dish)}</small>` : ""}</span><span class="stars" aria-label="Оцінка ${r.rate} з 5">${stars(r.rate)}</span></div>
+      <p>${esc(r.text)}</p>
+      <time>${esc(r.date)}</time>
+    </article>`).join("");
+  const avg = all.reduce((s, r) => s + r.rate, 0) / all.length;
+  document.getElementById("avg").textContent = avg.toFixed(1);
+  document.getElementById("avgStars").textContent = stars(Math.round(avg));
+  document.getElementById("count").textContent = `${all.length} ${plural(all.length)}`;
+}
+document.getElementById("reviewForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target;
+  const r = {
+    name: f.name.value.trim(), dish: f.dish.value.trim(), rate: +f.rate.value, text: f.text.value.trim(),
+    date: new Date().toLocaleDateString("uk-UA", { day: "numeric", month: "long", year: "numeric" }).replace(" р.", ""),
+  };
+  if (!r.name || !r.text) return;
+  mine.unshift(r);
+  try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (err) {}
+  f.reset(); renderReviews();
+  document.getElementById("msg").textContent = "Дякуємо! Відгук додано.";
+});
+renderReviews();
+</script>
+
+</body>
+</html>
